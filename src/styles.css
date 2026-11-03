@@ -1,0 +1,247 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Smile Smith Dental Clinic design system.
+ *
+ * Palette (from hex): navy #102A43, dental blue #1976D2, icy blue #EAF5FF,
+ * mint #DFF8F1, ivory warm white, body text #526273.
+ * All colors are oklch semantic tokens; components never hardcode colors.
+ */
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-mint: var(--mint);
+  --color-ivory: var(--ivory);
+  --color-primary-glow: var(--primary-glow);
+
+  --shadow-soft: 0 12px 32px -12px color-mix(in oklab, var(--navy) 16%, transparent);
+  --shadow-lift: 0 24px 48px -16px color-mix(in oklab, var(--navy) 24%, transparent);
+  --shadow-glow: 0 10px 36px -10px color-mix(in oklab, var(--primary) 40%, transparent);
+}
+
+:root {
+  --radius: 1rem;
+  --navy: oklch(0.28 0.05 250);
+  --ivory: oklch(0.988 0.006 90);
+  --mint: oklch(0.965 0.03 172);
+  --primary-glow: oklch(0.66 0.115 235);
+  --background: var(--ivory);
+  --foreground: var(--navy);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--navy);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--navy);
+  --primary: oklch(0.575 0.135 252);
+  --primary-foreground: oklch(0.99 0.005 90);
+  --secondary: oklch(0.965 0.018 240);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.965 0.015 240);
+  --muted-foreground: oklch(0.5 0.03 250);
+  --accent: oklch(0.94 0.05 172);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.92 0.02 240);
+  --input: oklch(0.92 0.02 240);
+  --ring: oklch(0.575 0.135 252);
+  --chart-1: oklch(0.575 0.135 252);
+  --chart-2: oklch(0.66 0.115 235);
+  --chart-3: oklch(0.6 0.1 190);
+  --chart-4: oklch(0.75 0.08 200);
+  --chart-5: oklch(0.45 0.08 250);
+  --sidebar: oklch(0.988 0.006 90);
+  --sidebar-foreground: var(--navy);
+  --sidebar-primary: oklch(0.575 0.135 252);
+  --sidebar-primary-foreground: oklch(0.99 0.005 90);
+  --sidebar-accent: oklch(0.965 0.018 240);
+  --sidebar-accent-foreground: var(--navy);
+  --sidebar-border: oklch(0.92 0.02 240);
+  --sidebar-ring: oklch(0.575 0.135 252);
+}
+
+.dark {
+  --background: oklch(0.2 0.04 250);
+  --foreground: oklch(0.96 0.01 240);
+  --card: oklch(0.24 0.045 250);
+  --card-foreground: oklch(0.96 0.01 240);
+  --popover: oklch(0.24 0.045 250);
+  --popover-foreground: oklch(0.96 0.01 240);
+  --primary: oklch(0.66 0.115 235);
+  --primary-foreground: oklch(0.2 0.04 250);
+  --secondary: oklch(0.28 0.04 250);
+  --secondary-foreground: oklch(0.96 0.01 240);
+  --muted: oklch(0.28 0.04 250);
+  --muted-foreground: oklch(0.7 0.03 250);
+  --accent: oklch(0.32 0.05 200);
+  --accent-foreground: oklch(0.96 0.01 240);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.66 0.115 235);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--primary) 20%, transparent);
+  }
+}
+
+/* ---- Motion utilities (transform/opacity only, reduced-motion aware) ---- */
+
+@utility float-slow {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+@utility float-slower {
+  animation: float-y 11s ease-in-out infinite reverse;
+}
+
+@utility drift {
+  animation: drift 22s ease-in-out infinite alternate;
+}
+
+@utility spin-slow {
+  animation: spin-slow 60s linear infinite;
+}
+
+@utility spin-slower {
+  animation: spin-slow 100s linear infinite;
+}
+
+@utility counter-spin-slow {
+  animation: counter-spin 60s linear infinite;
+}
+
+@utility counter-spin-slower {
+  animation: counter-spin 100s linear infinite;
+}
+
+@utility pulse-soft {
+  animation: pulse-soft 4.5s ease-in-out infinite;
+}
+
+@utility bg-hero-gradient {
+  background-image: linear-gradient(165deg, var(--ivory) 0%, var(--secondary) 55%, color-mix(in oklab, var(--mint) 60%, var(--secondary)) 100%);
+}
+
+@utility bg-booking-gradient {
+  background-image: linear-gradient(150deg, var(--secondary) 0%, color-mix(in oklab, var(--mint) 45%, var(--secondary)) 100%);
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(42px, -30px, 0) scale(1.12);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counter-spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .float-slow,
+  .float-slower,
+  .drift,
+  .spin-slow,
+  .spin-slower,
+  .counter-spin-slow,
+  .counter-spin-slower,
+  .pulse-soft {
+    animation: none;
+  }
+}
